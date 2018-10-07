@@ -809,7 +809,7 @@
                                                 <autoresizingMask key="autoresizingMask"/>
                                             </tableHeaderView>
                                         </scrollView>
-                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gMF-ag-C5R">
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gMF-ag-C5R">
                                             <rect key="frame" x="281" y="22" width="49" height="17"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="45" id="DtS-6S-MCz"/>
@@ -820,7 +820,7 @@
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
-                                        <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8AC-gK-Dkb">
+                                        <popUpButton verticalHuggingPriority="750" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8AC-gK-Dkb">
                                             <rect key="frame" x="322" y="17" width="77" height="25"/>
                                             <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="KmP-4i-jzF" id="Nux-eh-1TP">
                                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -833,6 +833,9 @@
                                                     </items>
                                                 </menu>
                                             </popUpButtonCell>
+                                            <connections>
+                                                <action selector="goalTimePopupButtonPressed:" target="XfG-lQ-9wD" id="OZZ-9N-iJH"/>
+                                            </connections>
                                         </popUpButton>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="WjQ-zj-xN1">
                                             <rect key="frame" x="250" y="248" width="348" height="30"/>
@@ -842,12 +845,15 @@
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
-                                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8Nb-pl-DaG">
-                                            <rect key="frame" x="398" y="13" width="81" height="32"/>
-                                            <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="0kM-Lp-e0N">
+                                        <button verticalHuggingPriority="750" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Nb-pl-DaG">
+                                            <rect key="frame" x="401" y="13" width="75" height="32"/>
+                                            <buttonCell key="cell" type="push" title="Reset" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="0kM-Lp-e0N">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
+                                            <connections>
+                                                <action selector="resetButtonPressed:" target="XfG-lQ-9wD" id="nBh-Vb-9F2"/>
+                                            </connections>
                                         </button>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Xcc-Hc-OaL">
                                             <rect key="frame" x="256" y="217" width="336" height="23"/>
@@ -919,6 +925,10 @@
                             <constraint firstItem="kg6-2W-KmT" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="vp4-7d-umV"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="goalLabel" destination="WjQ-zj-xN1" id="gk5-yK-nfi"/>
+                        <outlet property="goalTimePopupButton" destination="8AC-gK-Dkb" id="QFW-4P-boP"/>
+                    </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
