@@ -10,16 +10,17 @@
 import Cocoa
 
 class ViewController: NSViewController {
-
+    
     @IBOutlet weak var goalTimePopupButton: NSPopUpButton!
     
     @IBOutlet weak var goalLabel: NSTextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         goalTimePopupButton.removeAllItems()
-
+        goalTimePopupButton.addItems(withTitles: titles())
+        
     }
     
     @IBAction func goalTimePopupButtonPressed(_ sender: Any) {
@@ -34,11 +35,21 @@ class ViewController: NSViewController {
     
     override var representedObject: Any? {
         didSet {
-        // Update the view, if already loaded.
+            // Update the view, if already loaded.
         }
     }
-
-
+    
+    func titles() -> [String] {
+        
+        var titles = [String]()
+        
+        for number in 1...40 {
+            titles.append("\(number)h")
+        }
+        
+        return titles
+        
+    }
     
     
     
