@@ -20,11 +20,21 @@ class ViewController: NSViewController {
         
         goalTimePopupButton.removeAllItems()
         goalTimePopupButton.addItems(withTitles: titles())
+        updateView()
+    }
+    
+    func updateView() {
+        let goalTime = goalTimePopupButton.indexOfSelectedItem + 1
         
+        if goalTime == 1 {
+            goalLabel.stringValue = "Goal: 1 Hour"
+        } else {
+            goalLabel.stringValue = "Goal: \(goalTime) Hours"
+        }
     }
     
     @IBAction func goalTimePopupButtonPressed(_ sender: Any) {
-        
+        updateView()
         
     }
     

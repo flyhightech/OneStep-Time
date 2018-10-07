@@ -839,7 +839,7 @@
                                         </popUpButton>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="WjQ-zj-xN1">
                                             <rect key="frame" x="250" y="248" width="348" height="30"/>
-                                            <textFieldCell key="cell" lineBreakMode="clipping" borderStyle="border" alignment="center" title="Goal: 4 Hours" id="8ga-23-oT2">
+                                            <textFieldCell key="cell" lineBreakMode="clipping" borderStyle="border" alignment="center" title="Goal: " id="8ga-23-oT2">
                                                 <font key="font" size="20" name="Copperplate-Bold"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
