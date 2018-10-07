@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5C6731230E7BC79902194EC5 /* Pods_OneStep_Time.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80EF742CA84D6073E599CF26 /* Pods_OneStep_Time.framework */; };
 		A1F92CFE216681BD0041F408 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F92CFD216681BD0041F408 /* AppDelegate.swift */; };
 		A1F92D00216681BD0041F408 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F92CFF216681BD0041F408 /* ViewController.swift */; };
 		A1F92D03216681BD0041F408 /* OneStep_Time.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A1F92D01216681BD0041F408 /* OneStep_Time.xcdatamodeld */; };
@@ -15,6 +16,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		571F9470E84DEE8542330A3B /* Pods-OneStep Time.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneStep Time.release.xcconfig"; path = "Pods/Target Support Files/Pods-OneStep Time/Pods-OneStep Time.release.xcconfig"; sourceTree = "<group>"; };
+		7E31A83E55BE938C68BCA3A7 /* Pods-OneStep Time.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneStep Time.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OneStep Time/Pods-OneStep Time.debug.xcconfig"; sourceTree = "<group>"; };
+		80EF742CA84D6073E599CF26 /* Pods_OneStep_Time.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OneStep_Time.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1F92CFA216681BD0041F408 /* OneStep Time.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "OneStep Time.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1F92CFD216681BD0041F408 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A1F92CFF216681BD0041F408 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -30,6 +34,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C6731230E7BC79902194EC5 /* Pods_OneStep_Time.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -41,6 +46,8 @@
 			children = (
 				A1F92CFC216681BD0041F408 /* OneStep Time */,
 				A1F92CFB216681BD0041F408 /* Products */,
+				D9C588B0BCFAB76FE65D5449 /* Pods */,
+				CF165A14041E7D83CB4316A7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -66,6 +73,23 @@
 			path = "OneStep Time";
 			sourceTree = "<group>";
 		};
+		CF165A14041E7D83CB4316A7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				80EF742CA84D6073E599CF26 /* Pods_OneStep_Time.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D9C588B0BCFAB76FE65D5449 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7E31A83E55BE938C68BCA3A7 /* Pods-OneStep Time.debug.xcconfig */,
+				571F9470E84DEE8542330A3B /* Pods-OneStep Time.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -73,6 +97,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A1F92D0D216681CA0041F408 /* Build configuration list for PBXNativeTarget "OneStep Time" */;
 			buildPhases = (
+				3B103C6A83A3284739446352 /* [CP] Check Pods Manifest.lock */,
 				A1F92CF6216681BD0041F408 /* Sources */,
 				A1F92CF7216681BD0041F408 /* Frameworks */,
 				A1F92CF8216681BD0041F408 /* Resources */,
@@ -130,6 +155,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3B103C6A83A3284739446352 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-OneStep Time-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		A1F92CF6216681BD0041F408 /* Sources */ = {
@@ -273,6 +319,7 @@
 		};
 		A1F92D0E216681CA0041F408 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7E31A83E55BE938C68BCA3A7 /* Pods-OneStep Time.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "OneStep Time/OneStep_Time.entitlements";
@@ -292,6 +339,7 @@
 		};
 		A1F92D0F216681CA0041F408 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 571F9470E84DEE8542330A3B /* Pods-OneStep Time.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "OneStep Time/OneStep_Time.entitlements";

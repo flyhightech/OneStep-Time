@@ -11,12 +11,11 @@ import Cocoa
 class ViewController: NSViewController {
     
     @IBOutlet weak var goalTimePopupButton: NSPopUpButton!
-    
     @IBOutlet weak var goalLabel: NSTextField!
-    
     @IBOutlet weak var inOutButton: NSButton!
-    
     @IBOutlet weak var currentlyLabel: NSTextField!
+    
+    var currentPeriod:Period?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,7 +36,15 @@ class ViewController: NSViewController {
     }
     
     @IBAction func inOutButtonPressed(_ sender: Any) {
-        if let context = (NSApp.delegate as? AppDelegate)
+        
+        if let context = (NSApp.delegate as? AppDelegate)?.persistentContainer.viewContext {
+            currentPeriod = Period(context: context)
+            currentPeriod?.inDate = Date()
+            
+        }
+        
+        (NSApp.delegate as? AppDelegate)?.saveAction(nil)
+        
     }
     
     @IBAction func goalTimePopupButtonPressed(_ sender: Any) {
