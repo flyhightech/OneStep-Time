@@ -5,7 +5,6 @@
 //  Created by Bernard Huff on 10/4/18.
 //  Copyright © 2018 Flyhightech.LLC. All rights reserved.
 //
-//  Test 1
 
 import Cocoa
 
@@ -14,6 +13,10 @@ class ViewController: NSViewController {
     @IBOutlet weak var goalTimePopupButton: NSPopUpButton!
     
     @IBOutlet weak var goalLabel: NSTextField!
+    
+    @IBOutlet weak var inOutButton: NSButton!
+    
+    @IBOutlet weak var currentlyLabel: NSTextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +34,10 @@ class ViewController: NSViewController {
         } else {
             goalLabel.stringValue = "Goal: \(goalTime) Hours"
         }
+    }
+    
+    @IBAction func inOutButtonPressed(_ sender: Any) {
+        if let context = (NSApp.delegate as? AppDelegate)
     }
     
     @IBAction func goalTimePopupButtonPressed(_ sender: Any) {
