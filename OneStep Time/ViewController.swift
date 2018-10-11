@@ -36,11 +36,12 @@ class ViewController: NSViewController {
     }
     
     @IBAction func inOutButtonPressed(_ sender: Any) {
-        
-        if let context = (NSApp.delegate as? AppDelegate)?.persistentContainer.viewContext {
-            currentPeriod = Period(context: context)
-            currentPeriod?.inDate = Date()
-            
+        if currentPeriod == nil {
+            if let context = (NSApp.delegate as? AppDelegate)?.persistentContainer.viewContext {
+                currentPeriod = Period(context: context)
+                currentPeriod?.inDate = Date()
+                
+            }
         }
         
         (NSApp.delegate as? AppDelegate)?.saveAction(nil)
