@@ -16,6 +16,7 @@ class ViewController: NSViewController {
     @IBOutlet weak var currentlyLabel: NSTextField!
     
     var currentPeriod:Period?
+    var timer : Timer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,6 +42,7 @@ class ViewController: NSViewController {
         } else {
             inOutButton.title = "Out"
             currentlyLabel.isHidden = false
+            currentlyLabel.stringValue = "Currently: \(currentPeriod!.currentlyString())"
         }
         
     }
@@ -55,6 +57,9 @@ class ViewController: NSViewController {
                 currentPeriod?.inDate = Date(timeIntervalSinceNow: -1404)
                 
             }
+            timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { (timer) in
+                self.updateView()
+            })
             
         } else {
             
@@ -62,6 +67,8 @@ class ViewController: NSViewController {
             
             currentPeriod!.outDate = Date()
             currentPeriod = nil
+            timer?.invalidate()
+            timer = nil
         }
         
         updateView()

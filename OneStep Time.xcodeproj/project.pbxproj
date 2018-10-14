@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5C6731230E7BC79902194EC5 /* Pods_OneStep_Time.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80EF742CA84D6073E599CF26 /* Pods_OneStep_Time.framework */; };
+		A104BC2C21739CDB0019CC9E /* Period.swift in Sources */ = {isa = PBXBuildFile; fileRef = A104BC2B21739CDB0019CC9E /* Period.swift */; };
 		A1F92CFE216681BD0041F408 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F92CFD216681BD0041F408 /* AppDelegate.swift */; };
 		A1F92D00216681BD0041F408 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F92CFF216681BD0041F408 /* ViewController.swift */; };
 		A1F92D03216681BD0041F408 /* OneStep_Time.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A1F92D01216681BD0041F408 /* OneStep_Time.xcdatamodeld */; };
@@ -19,6 +20,7 @@
 		571F9470E84DEE8542330A3B /* Pods-OneStep Time.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneStep Time.release.xcconfig"; path = "Pods/Target Support Files/Pods-OneStep Time/Pods-OneStep Time.release.xcconfig"; sourceTree = "<group>"; };
 		7E31A83E55BE938C68BCA3A7 /* Pods-OneStep Time.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneStep Time.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OneStep Time/Pods-OneStep Time.debug.xcconfig"; sourceTree = "<group>"; };
 		80EF742CA84D6073E599CF26 /* Pods_OneStep_Time.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OneStep_Time.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A104BC2B21739CDB0019CC9E /* Period.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Period.swift; sourceTree = "<group>"; };
 		A1F92CFA216681BD0041F408 /* OneStep Time.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "OneStep Time.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1F92CFD216681BD0041F408 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A1F92CFF216681BD0041F408 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -64,6 +66,7 @@
 			children = (
 				A1F92CFD216681BD0041F408 /* AppDelegate.swift */,
 				A1F92CFF216681BD0041F408 /* ViewController.swift */,
+				A104BC2B21739CDB0019CC9E /* Period.swift */,
 				A1F92D04216681CA0041F408 /* Assets.xcassets */,
 				A1F92D06216681CA0041F408 /* Main.storyboard */,
 				A1F92D09216681CA0041F408 /* Info.plist */,
@@ -184,6 +187,7 @@
 			files = (
 				A1F92D03216681BD0041F408 /* OneStep_Time.xcdatamodeld in Sources */,
 				A1F92D00216681BD0041F408 /* ViewController.swift in Sources */,
+				A104BC2C21739CDB0019CC9E /* Period.swift in Sources */,
 				A1F92CFE216681BD0041F408 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
