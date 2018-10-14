@@ -11,10 +11,17 @@ import Cocoa
 extension Period {
     
     func currentlyString() -> String {
-        return "4h 12m 4s"
+        if let inDate = self.inDate {
+            return stringFromDate(date1: inDate, date2: Date())
+        }
+        return "ERROR"
     }
     
     func stringFromDate(date1:Date,date2:Date) -> String {
         
+        var theString = ""
+        
+        return theString
     }
-}
+    
+} //End of the code
