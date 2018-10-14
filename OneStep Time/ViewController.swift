@@ -26,6 +26,7 @@ class ViewController: NSViewController {
     }
     
     func updateView() {
+        
         let goalTime = goalTimePopupButton.indexOfSelectedItem + 1
         
         if goalTime == 1 {
@@ -33,17 +34,37 @@ class ViewController: NSViewController {
         } else {
             goalLabel.stringValue = "Goal: \(goalTime) Hours"
         }
+        
+        if currentPeriod == nil {
+            inOutButton.title = "In"
+            currentlyLabel.isHidden = true
+        } else {
+            inOutButton.title = "Out"
+            currentlyLabel.isHidden = false
+        }
+        
     }
     
     @IBAction func inOutButtonPressed(_ sender: Any) {
+        
+//        Clocking in code below
+        
         if currentPeriod == nil {
             if let context = (NSApp.delegate as? AppDelegate)?.persistentContainer.viewContext {
                 currentPeriod = Period(context: context)
-                currentPeriod?.inDate = Date()
+                currentPeriod?.inDate = Date(timeIntervalSinceNow: -1404)
                 
             }
+            
+        } else {
+            
+//        Clocking out
+            
+            currentPeriod!.outDate = Date()
+            currentPeriod = nil
         }
         
+        updateView()
         (NSApp.delegate as? AppDelegate)?.saveAction(nil)
         
     }
