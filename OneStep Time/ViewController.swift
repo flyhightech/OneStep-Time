@@ -54,7 +54,7 @@ class ViewController: NSViewController {
         if currentPeriod == nil {
             if let context = (NSApp.delegate as? AppDelegate)?.persistentContainer.viewContext {
                 currentPeriod = Period(context: context)
-                currentPeriod?.inDate = Date(timeIntervalSinceNow: -1404)
+                currentPeriod?.inDate = Date()
                 
             }
             timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { (timer) in
@@ -69,6 +69,7 @@ class ViewController: NSViewController {
             currentPeriod = nil
             timer?.invalidate()
             timer = nil
+            
         }
         
         updateView()

@@ -21,6 +21,21 @@ extension Period {
         
         var theString = ""
         
+        let cal = Calendar.current.dateComponents([.hour, .minute, .second], from: date1, to: date2)
+        
+        guard let hour = cal.hour, let minute = cal.minute, let second = cal.second else {
+            return "ERROR"
+        }
+        if hour > 0 {
+            theString += "\(hour)h \(minute)m "
+        } else {
+            if minute > 0 {
+                theString += "\(minute)m "
+            }
+        }
+        
+        theString += "\(second)s "
+        
         return theString
     }
     
