@@ -12,12 +12,12 @@ extension Period {
     
     func currentlyString() -> String {
         if let inDate = self.inDate {
-            return stringFromDate(date1: inDate, date2: Date())
+            return Period.stringFromDate(date1: inDate, date2: Date())
         }
         return "ERROR"
     }
     
-    func stringFromDate(date1:Date,date2:Date) -> String {
+    class func stringFromDate(date1:Date,date2:Date) -> String {
         
         var theString = ""
         
@@ -37,6 +37,45 @@ extension Period {
         theString += "\(second)s "
         
         return theString
+    }
+    
+    func prettyDate(date:Date) -> String {
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "h:mma"
+        return formatter.string(from:date)
+        
+    }
+    
+    func prettyInDate() -> String {
+        
+        if let inDate = self.inDate {
+            return prettyDate(date: inDate)
+        }
+        
+        return "Error"
+        
+    }
+    
+    func prettyOutDate() -> String {
+        
+        if let outDate = self.outDate {
+            return prettyDate(date: outDate)
+        }
+        
+        return "Error"
+        
+    }
+    
+    func time() -> TimeInterval {
+        if let inDate = self.inDate {
+            if let outDate = self.outDate {
+               return outDate.timeIntervalSince(inDate)
+            } else {
+                return Date().timeIntervalSince(inDate)
+            }
+        }
+        return 0.0
     }
     
 } //End of the code

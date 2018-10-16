@@ -8,13 +8,15 @@
 
 import Cocoa
 
-class ViewController: NSViewController {
+class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelegate {
     
     @IBOutlet weak var goalTimePopupButton: NSPopUpButton!
     @IBOutlet weak var goalLabel: NSTextField!
     @IBOutlet weak var inOutButton: NSButton!
     @IBOutlet weak var currentlyLabel: NSTextField!
     @IBOutlet weak var tableView: NSTableView!
+    @IBOutlet weak var goalProgressIndicator: NSProgressIndicator!    
+    @IBOutlet weak var remainingLabel: NSTextField!
     
     var currentPeriod:Period?
     var timer : Timer?
@@ -22,6 +24,9 @@ class ViewController: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView.dataSource = self
+        tableView.delegate = self
         
         goalTimePopupButton.removeAllItems()
         goalTimePopupButton.addItems(withTitles: titles())
@@ -73,6 +78,44 @@ class ViewController: NSViewController {
             currentlyLabel.stringValue = "Currently: \(currentPeriod!.currentlyString())"
         }
         
+        remainingLabel.stringValue = remainingTimeAsString()
+        
+        let ratio = totalTimeInterval() / goalTimeInterval()
+        goalProgressIndicator.doubleValue = ratio
+        
+    }
+    
+    func remainingTimeAsString() -> String {
+        let remainingTime = goalTimeInterval() - totalTimeInterval()
+        
+        if remainingTime <= 0 {
+            return "Finished! \(Period.stringFromDate(date1: Date(), date2: Date(timeIntervalSinceNow: totalTimeInterval())))"
+        } else {
+            return "Remaining \(Period.stringFromDate(date1: Date(), date2: Date(timeIntervalSinceNow: remainingTime)))"
+        }
+    }
+    
+    func totalTimeInterval() -> TimeInterval {
+        
+        var time = 0.0
+        
+        for period in periods {
+            
+            time += period.time()
+        }
+        
+        if let currentPeriod = self.currentPeriod {
+            
+            time += currentPeriod.time()
+            
+        }
+        
+        return time
+        
+    }
+    
+    func goalTimeInterval() -> TimeInterval {
+        return Double(goalTimePopupButton.indexOfSelectedItem + 1) * 60.0 * 60.0
     }
     
     @IBAction func inOutButtonPressed(_ sender: Any) {
@@ -94,9 +137,11 @@ class ViewController: NSViewController {
 //        Clocking out
             
             currentPeriod!.outDate = Date()
+            (NSApp.delegate as? AppDelegate)?.saveAction(nil)
             currentPeriod = nil
             timer?.invalidate()
             timer = nil
+            getPeriods()
             
         }
         
@@ -133,10 +178,31 @@ class ViewController: NSViewController {
         
     }
     
+    func numberOfRows(in tableView: NSTableView) -> Int {
+        return periods.count
+    }
     
+    func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
+        let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "PeriodCell"), owner: self) as? PeriodCell
+        
+        let period = periods[row]
+        
+        cell?.timeTotalTextField.stringValue = Period.stringFromDate(date1: Date(), date2: Date(timeIntervalSinceNow: period.time()))
+        cell?.timeRangeTextField.stringValue = "\(period.prettyInDate()) - \(period.prettyOutDate())"
+        
+        return cell
+        
+    }
     
     
     
 }
-// Nothing below here
+
+class PeriodCell : NSTableCellView {
+    
+    @IBOutlet weak var timeRangeTextField: NSTextField!
+    
+    @IBOutlet weak var timeTotalTextField: NSTextField!
+    
+}
 
