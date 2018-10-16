@@ -14,16 +14,44 @@ class ViewController: NSViewController {
     @IBOutlet weak var goalLabel: NSTextField!
     @IBOutlet weak var inOutButton: NSButton!
     @IBOutlet weak var currentlyLabel: NSTextField!
+    @IBOutlet weak var tableView: NSTableView!
     
     var currentPeriod:Period?
     var timer : Timer?
+    var periods = [Period]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         goalTimePopupButton.removeAllItems()
         goalTimePopupButton.addItems(withTitles: titles())
+        getPeriods()
+        
+    }
+    
+    func getPeriods() {
+        
+        if let context = (NSApp.delegate as? AppDelegate)?.persistentContainer.viewContext {
+            if let name = Period.entity().name {
+                let fetchRequest = NSFetchRequest<Period>(entityName: name)
+                fetchRequest.sortDescriptors = [NSSortDescriptor(key: "outDate", ascending: false)]
+                if let periods = try? context.fetch(fetchRequest) {
+                    self.periods = periods
+                    for period in periods {
+                        if period.outDate == nil {
+                            currentPeriod = period
+                            timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { (timer) in
+                                self.updateView()
+                            })
+                        }
+                    }
+                }
+            }
+        }
+        
+        tableView.reloadData()
         updateView()
+        
     }
     
     func updateView() {
