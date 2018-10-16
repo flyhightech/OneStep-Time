@@ -855,7 +855,7 @@
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
                                             <connections>
-                                                <action selector="resetButtonPressed:" target="XfG-lQ-9wD" id="nBh-Vb-9F2"/>
+                                                <action selector="resetClicked:" target="XfG-lQ-9wD" id="wH1-MN-Yua"/>
                                             </connections>
                                         </button>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Xcc-Hc-OaL">

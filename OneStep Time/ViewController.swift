@@ -40,16 +40,22 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
             if let name = Period.entity().name {
                 let fetchRequest = NSFetchRequest<Period>(entityName: name)
                 fetchRequest.sortDescriptors = [NSSortDescriptor(key: "outDate", ascending: false)]
-                if let periods = try? context.fetch(fetchRequest) {
-                    self.periods = periods
-                    for period in periods {
+                if var periods = try? context.fetch(fetchRequest) {
+                    
+                    for x in 0..<periods.count {
+                        let period = periods[x]
                         if period.outDate == nil {
                             currentPeriod = period
                             timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { (timer) in
                                 self.updateView()
                             })
+                            periods.remove(at: x)
+                            break
                         }
                     }
+                    
+                    self.periods = periods
+                    
                 }
             }
         }
@@ -82,6 +88,23 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
         
         let ratio = totalTimeInterval() / goalTimeInterval()
         goalProgressIndicator.doubleValue = ratio
+        
+    }
+    
+    @IBAction func resetClicked(_ sender: Any) {
+        
+        if let context = (NSApp.delegate as? AppDelegate)?.persistentContainer.viewContext {
+            
+            for period in periods {
+                context.delete(period)
+            }
+            
+            if let currentPeriod = self.currentPeriod {
+                context.delete(currentPeriod)
+                self.currentPeriod = nil
+            }
+            getPeriods()
+        }
         
     }
     
